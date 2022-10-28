@@ -23,8 +23,8 @@ class LoginController extends Controller
             'password' => ['required','min:8']
         ]);
 
-        $user = User::where('email',$request->email)->orWhere('phone',$request->phone)->first();
-        
+        $user = User::where('email',$request->email)->orWhere('phone',$request->email)->first();
+
         if($user && Hash::check($request->password,$user->password)){
 
             return response()->json([

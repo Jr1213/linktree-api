@@ -13,15 +13,14 @@ class AuthControllerTest extends TestCase
 
     public function test_user_can_create_account()
     {
-
         $user = User::factory()->make();
-
         $data = [
             'name' => $user->name,
             'email' => $user->email,
             'phone' => $user->phone,
             'password' => '12345678',
-            'password_confirmation' => '12345678'
+            'password_confirmation' => '12345678',
+            'username' => $user->username
         ];
 
         $reponse = $this->postJson('api/Auth', $data)->assertCreated()->json();
